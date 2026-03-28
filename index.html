@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30 Days of Us</title>
+    <title>Our First Month</title>
     <style>
         :root { --rose: #c97b84; --soft-pink: #ffafbd; --bg: #fff9fa; }
         body { font-family: 'Georgia', serif; background: linear-gradient(135deg, #fff9fa 0%, #ffefef 100%); color: #5d576b; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
@@ -16,11 +16,11 @@
         .time-unit span { display: block; font-size: 0.75rem; text-transform: uppercase; color: #999; margin-top: 5px; }
 
         .card { background: white; border-radius: 25px; padding: 40px 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; border: 1px solid rgba(255,255,255,0.5); }
-        .lyric { color: var(--rose); font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; line-height: 1.4; }
+        .lyric { color: var(--rose); font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; line-height: 1.4; font-style: italic; }
         .message-box { font-size: 1.15rem; line-height: 1.8; font-style: italic; background: #fff5f6; padding: 30px; border-radius: 15px; border-left: 5px solid var(--rose); margin: 25px 0; color: #4a4e69; text-align: left; }
         
         .music-player { position: fixed; bottom: 25px; right: 25px; background: white; padding: 12px 22px; border-radius: 50px; display: flex; align-items: center; gap: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); z-index: 1000; border: 1px solid var(--soft-pink); }
-        .play-btn { background: var(--rose); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; transition: 0.3s; }
+        .play-btn { background: var(--rose); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; }
         
         footer { text-align: center; padding: 40px; color: var(--rose); font-size: 1rem; font-weight: bold; }
     </style>
@@ -29,11 +29,11 @@
     <div class="container">
         <header style="text-align: center; margin-bottom: 40px;">
             <h1 style="color: var(--rose); font-size: 3rem; margin: 0;">Our First Month</h1>
-            <p style="margin-top: 10px; opacity: 0.8; font-style: italic;">Where it all began...</p>
+            <p style="margin-top: 10px; opacity: 0.8; font-style: italic;">The start of something beautiful.</p>
         </header>
 
         <div class="timer-box">
-            <span class="timer-label">Time spent with you</span>
+            <span class="timer-label">We have been together for</span>
             <div id="timer">
                 <div class="time-unit" id="days">00<span>Days</span></div>
                 <div class="time-unit" id="hours">00<span>Hours</span></div>
@@ -52,9 +52,7 @@
             <p style="font-size: 1.2rem; font-weight: bold; color: var(--rose); margin-top: 20px;">Happy Anniversary! ❤️</p>
         </div>
 
-        <footer>
-            Forever and Always.
-        </footer>
+        <footer>Forever and Always.</footer>
     </div>
 
     <div class="music-player">
@@ -67,7 +65,7 @@
     </div>
 
     <script>
-        // Set to Feb 28, 2026 at 3:40 AM
+        // Feb 28, 2026, 3:40 AM
         const startDate = new Date(2026, 1, 28, 3, 40, 0);
         
         function updateTimer() {
@@ -77,26 +75,15 @@
             const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const m = Math.floor((diff / (1000 * 60)) % 60);
             const s = Math.floor((diff / 1000) % 60);
-
-            document.getElementById('days').innerHTML = (d < 10 ? "0" + d : d) + "<span>Days</span>";
-            document.getElementById('hours').innerHTML = (h < 10 ? "0" + h : h) + "<span>Hours</span>";
-            document.getElementById('minutes').innerHTML = (m < 10 ? "0" + m : m) + "<span>Mins</span>";
-            document.getElementById('seconds').innerHTML = (s < 10 ? "0" + s : s) + "<span>Secs</span>";
+            document.getElementById('days').innerText = (d < 10 ? "0" + d : d);
+            document.getElementById('hours').innerText = (h < 10 ? "0" + h : h);
+            document.getElementById('minutes').innerText = (m < 10 ? "0" + m : m);
+            document.getElementById('seconds').innerText = (s < 10 ? "0" + s : s);
         }
-        
-        setInterval(updateTimer, 1000); 
-        updateTimer();
-        
+        setInterval(updateTimer, 1000); updateTimer();
         function toggleMusic() {
-            const song = document.getElementById('bgSong'); 
-            const btn = document.getElementById('mBtn');
-            if (song.paused) { 
-                song.play(); 
-                btn.innerHTML = "⏸"; 
-            } else { 
-                song.pause(); 
-                btn.innerHTML = "▶"; 
-            }
+            const song = document.getElementById('bgSong'); const btn = document.getElementById('mBtn');
+            if (song.paused) { song.play(); btn.innerHTML = "⏸"; } else { song.pause(); btn.innerHTML = "▶"; }
         }
     </script>
 </body>
